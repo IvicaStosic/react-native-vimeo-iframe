@@ -60,6 +60,9 @@ player.addEvent('ready', function() {
   player.addEvent('finish', function(data) {
     sendEvent('finish', data);
   });
+  player.addEvent('fullscreen', function(data) {
+    sendEvent('fullscreen', data);
+  });
   sendEvent('ready');
 });
 

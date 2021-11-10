@@ -14,6 +14,7 @@ export interface LayoutProps {
   onFinish?: () => void
   onVolumeChange?: () => void
   onError?: () => void
+  onFullscreen?: () => void
   scalesPageToFit?: boolean
   style?: StyleProp<ViewStyle>
   containerStyle?: StyleProp<ViewStyle>

@@ -12,6 +12,7 @@ export const Vimeo: React.FC<LayoutProps> = ({
   onPlayProgress,
   onPause,
   onFinish,
+  onFullscreen,
   scalesPageToFit,
   loop,
   controls,
@@ -30,9 +31,10 @@ export const Vimeo: React.FC<LayoutProps> = ({
 
   const [autoPlayValue, setAutoPlay] = useState<boolean>(autoPlay)
   const muted = Platform.OS === 'android' && autoPlayValue
-  const toggleAutoPlay = useCallback(() => setAutoPlay(!autoPlayValue), [
-    autoPlayValue,
-  ])
+  const toggleAutoPlay = useCallback(
+    () => setAutoPlay(!autoPlayValue),
+    [autoPlayValue]
+  )
 
   const handlers: any = {}
 
@@ -82,6 +84,7 @@ export const Vimeo: React.FC<LayoutProps> = ({
     registerBridgeEventHandler('finish', onFinish)
     registerBridgeEventHandler('volumeChange', onVolumeChange)
     registerBridgeEventHandler('error', onError)
+    registerBridgeEventHandler('fullscreen', onFullscreen)
   }, [
     onReadyDefault,
     onPlay,
@@ -90,6 +93,7 @@ export const Vimeo: React.FC<LayoutProps> = ({
     onVolumeChange,
     onPause,
     onFinish,
+    onFullscreen,
   ])
 
   const registerBridgeEventHandler = (eventName: string, handler: any) => {
